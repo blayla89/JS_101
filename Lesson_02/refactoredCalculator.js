@@ -1,13 +1,3 @@
-// Pseudocode
-/*
-  validate user input
-  - declare formatted and initialize to response with blank
-  spaces removed and set to all lowercase letters
-  - check if response is yes or no
-    - if no, ask the user to enter only yes or no
-    - if yes, continue
-*/
-
 console.log(`Welcome to Calculator!`);
 
 let rlSync = require('readline-sync');
