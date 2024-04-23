@@ -1,0 +1,29 @@
+{
+  "en": {
+    "greeting": "Welcome to calculator!",
+    "chooseLanguage": "Please select your language: 1) English or 2) French",
+    "invalidLanguage": "Please select either 1 or 2.",
+    "displayLanguageChoice": "You chose:",
+    "firstNumber": "What's the first number?",
+    "secondNumber": "What's the second number?",
+    "invalidNumber": "Please enter a valid number",
+    "operation": "What operation do you want to perform?\n 1) Add 2) Subtract 3) Multiply 4) Divide",
+    "invalidOperation": "Must choose 1, 2, 3, or 4",
+    "result": "The result is:",
+    "playAgain": "Would you like to perform another operation? (yes or no)",
+    "invalidResponse": "Please enter either yes or no",
+    "thankyou": "Thank you for using calculator. See you next time!"
+  },
+  "fr": {
+    "greeting": "Bienvenue à la calculatrice",
+    "firstNumber": "Quel est le premier nombre?",
+    "secondNumber": "Quel est le deuxième nombre? ",
+    "operation": "Quelle opération souhaitez-vous effectuer ?\n 1) Ajouter 2) Soustraire 3) Multiplier 4) Diviser",
+    "invalidOperation": "Vous devez choisir 1, 2, 3 ou 4",
+    "invalidNumber": "S'il vous plait, entrez un nombre valide",
+    "playAgain": "Voulez-vous effectuer une autre opération ? (oui ou non)",
+    "invalidResponse": "Vous devez choisir oui ou non",
+    "result": "le résultat est:",
+    "thankyou": "Merci d'utiliser la calculatrice. À la prochaine!"
+  }
+}
