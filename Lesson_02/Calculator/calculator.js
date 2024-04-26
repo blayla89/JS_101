@@ -6,7 +6,6 @@ let defaultLanguage = 'en';
 const LANGUAGES = ['en', 'fr'];
 let play = true;
 
-
 // FXNS _______________________________________________
 
 function invalidNumber(number) {
@@ -51,7 +50,6 @@ function invalidResponse(playAgain) {
   } else {
     return !['yes', 'no'].includes(formatted);
   }
-
 }
 
 function invalidLanguageChoice(preferredLanguage) {
