@@ -1,8 +1,12 @@
 {
-  "invalidLanguage": "Please select either 1 or 2.",
   "en": {
     "greeting": "Welcome to calculator!",
-    "chooseLanguage": "Please select your language: 1) English or 2) French",
+    "chooseLanguage": "Please select your language from the following choices:",
+    "invalidLanguage": "Please select either:",
+    "languages": [
+      "english",
+      "french"
+    ],
     "displayLanguageChoice": "You chose:",
     "firstNumber": "What's the first number?",
     "secondNumber": "What's the second number?",
@@ -11,7 +15,11 @@
     "invalidOperation": "Must choose 1, 2, 3, or 4",
     "result": "The result is:",
     "playAgain": "Would you like to perform another operation? (yes or no)",
-    "invalidPlayAgain": "Please enter either yes or no",
+    "invalidPlayAgain": "Please enter either: yes or no",
+    "validPlayAgainInput": [
+      "yes",
+      "no"
+    ],
     "thankyou": "Thank you for using calculator. See you next time!"
   },
   "fr": {
@@ -22,7 +30,11 @@
     "invalidOperation": "Vous devez choisir 1, 2, 3 ou 4",
     "invalidNumber": "S'il vous plait, entrez un nombre valide",
     "playAgain": "Voulez-vous effectuer une autre opération ? (oui ou non)",
-    "invalidPlayAgain": "Vous devez choisir oui ou non",
+    "validPlayAgainInput": [
+      "oui",
+      "non"
+    ],
+    "invalidPlayAgain": "Vous devez choisir: oui ou non",
     "result": "le résultat est:",
     "thankyou": "Merci d'utiliser la calculatrice. À la prochaine!"
   }
