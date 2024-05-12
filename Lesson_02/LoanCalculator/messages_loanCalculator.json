@@ -1,0 +1,61 @@
+{
+  "introduction": {
+    "greeting": "Welcome to Loan Calculator!\n",
+    "details": "This program determines your monthly loan payment.\n",
+    "preparation": "To get started, you'll 3 things:\n",
+    "requiredInputs": [
+      "1) loan amount",
+      "2) Annual Percentage Rate(APR)",
+      "3) loan duration\n"
+    ],
+    "resume": "Press enter when you're ready to continue."
+  },
+  "table": {
+    "tableRows": [
+      "—————————————————————————————————————————————————",
+      "Loan Calculator",
+      "—————————————————————————————————————————————————\n",
+      "Loan Amount: $_______.__               \n",
+      "APR:  ___._ %                          \n",
+      "Loan Duration:  ___years   ___months   \n",
+      "—————————————————————————————————————————————————",
+      "Monthly Payment: $_______.__ ",
+      "—————————————————————————————————————————————————\n"
+    ]
+  },
+  "loanAmount": {
+    "getLoanAmount": "Please enter your total loan amount.",
+    "inputError": "LOAN AMOUNT ERROR: Please enter a valid, positive number."
+  },
+  "rate": {
+    "getAnnualPercentageRate": "Enter your APR:",
+    "inputError": "RATE ERROR: Please enter a valid, positive number."
+  },
+  "loanDuration": {
+    "getValidYears": "Loan duration: First, enter the number of years. If none, enter 0.",
+    "getValidMonths": "Loan duration: Next, enter the number of months. If none, enter 0.",
+    "inputError": "Please enter a valid, whole number.",
+    "inputErrorTotalDuration": "LOAN DURATION ERROR: Either years or months must be a positive, whole number.",
+    "re-enterYears": "Re-enter the number of years. If none, enter 0.",
+    "re-enterMonths": "Re-enter the number of months. If none, enter 0."
+  },
+  "session": {
+    "getRepeatOrExit": "Would you like to perform another calculation? (y/n)",
+    "validInput": [
+      "y",
+      "n"
+    ],
+    "inputError": "Please enter \"y\" or \"n\". ",
+    "farewell": "Thank you for using Loan Calculator. See you next time!"
+  },
+  "userValidation": {
+    "displayUserInput": "You entered:",
+    "getValidation": "Is this correct? (y/n)",
+    "validInput": [
+      "y",
+      "n"
+    ],
+    "inputError": "Please enter \"y\" or \"n\". ",
+    "reenterData": "Please re-enter your information"
+  }
+}
