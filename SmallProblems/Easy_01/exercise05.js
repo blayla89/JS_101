@@ -1,60 +1,68 @@
-/*
-  Create a simple tip calculator. The program should prompt for a
-  bill amount and a tip rate. The program must compute the tip, and
-  then log both the tip and the total amount of the bill to the
-  console. You can ignore input validation and assume that the user
-  will enter numbers.
-*/
+/* -----------------------PROBLEM-DESCRIPTION-------------------------------
+ Create a simple tip calculator. The program should prompt for a bill
+ amount and a tip rate. The program must compute the tip, and then log
+ both the tip and the total amount of the bill to the console. You can
+ ignore input validation and assume that the user will enter numbers.
+---------------------------------------------------------------------------- */
 
-/*
-  Problem: -------------------
-    - Input: String
-    - Output: String
-    - Details:
-      - ignore input validation
-      - display  tip and total rounded to two numbers pre-pended with $
-         - if whole number, display .00
+// PSEUDOCODE:
+// get bill amt
+// get tip rate as percent
+// convert tip rate to decimal
+// display the total tip
+// display the total (bill amt + tip)
 
-  Examples: -------------------
-    What is the bill? 200
-    What is the tip percentage? 15
+// Variables
+const READLINE = require('readline-sync');
 
-    The tip is $30.00
-    The total is $230.00
+const MESSAGES = {
+  getBill : `What is the bill?`,
+  getTipRate : `What is the tip percentage?`
+};
 
-  Data Structure: n/a
+let info = {};
 
-  Algorithm: -----------------
-  - # given 2 strings representing the bill amount and the tip percentage
+// FXNS
+function prompt(message) {
+  console.log(`=> ${message}`);
+}
 
-  - SET `bill` = GET `bill`
-   - coerce to Number data type
+function calculateTipTotal() {
+  const TIP_RATE_AS_DECIMAL = info.tipPercentage / 100;
+  const BILL = info.billAmount;
+  return TIP_RATE_AS_DECIMAL * BILL;
+}
 
-  - SET `tipPercentage` = GET `tipPercentage`
-    - coerce to Number data type
+function calculateTotalBill() {
+  const BILL = info.billAmount;
+  return BILL + calculateTipTotal();
+}
 
-  - SET `totalTip` = `bill` * `tipPercentage`
-  - PRINT `totalTip` rounded to 2 decimals
+// main ----------------------------------------------------------------------
 
-  - SET `totalBill` = `bill` + `totalTip`
-  - PRINT `totalBill` rounded to 2 decimals
+prompt(MESSAGES.getBill);
+info.billAmount = Number(READLINE.question());
 
-*/
+prompt(MESSAGES.getTipRate);
+info.tipPercentage = Number(READLINE.question());
 
-let rlSync = require('readline-sync');
+console.log(`\n`);
+prompt(`The tip is $${calculateTipTotal().toFixed(2)}`);
+prompt(`The total is $${calculateTotalBill().toFixed(2)}`);
 
-console.log(`What is the bill?`);
-let bill = rlSync.prompt();
-bill = parseInt(bill, 10);
-console.log(bill);
+/* -------------------------BOOK-SOLUTION----------------------------------
+  let readlineSync = require("readline-sync");
 
-console.log(`What is the tip percentage?`);
-let tipPercentage = rlSync.prompt();
-tipPercentage = parseInt(tipPercentage, 10);
-console.log(tipPercentage);
+  let bill = parseFloat(readlineSync.question("What is the bill?\n"));
 
-let totalTip = bill * (tipPercentage / 100);
-console.log(`The tip is $${totalTip.toFixed(2)}`);
+  let percentage = parseFloat(
+    readlineSync.question("What is the tip percentage??\n")
+  );
 
-let totalBill = bill + totalTip;
-console.log(`The total is $${totalBill.toFixed(2)}`);
+  let tip = bill * (percentage / 100);
+
+  let total = bill + tip;
+
+  console.log(`The tip is $${tip.toFixed(2)}`);
+  console.log(`The total is $${total.toFixed(2)}`);
+---------------------------------------------------------------------------- */

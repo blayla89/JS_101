@@ -1,64 +1,70 @@
-/*
+/* -----------------------PROBLEM-DESCRIPTION-------------------------------
+
   # Build a program that asks the user to enter the length and width
     of a room in meters, and then logs the area of the room to the
     console in both square meters and square feet.
+    Note: 1 square meter == 10.7639 square feet
 
-  Problem -----------------
-    - Input: 2 Strings (length and width in meters)
-    - Ouput: String (containing area in square meters AND sqaure feet)
-    - Details:
-      - no input validation required
-      - prompt user for input
-      - get input from user
-      - 1 square meter = 10.7639 square feet
-      - return area in both square meters and square feet interpolated in string
-      - just numeric digit given as string input
-      - round to 2 digits
+    Do not worry about validating the input at this time. Use the
+    readlineSync.prompt method to collect user input.
 
-  Mental Model ------------
+---------------------------------------------------------------------------- */
 
-  Area in squareMeters = lengthInMeters * widthInMeters
+const READLINE = require('readline-sync');
+const NUMBER_OF_FEET_PER_ONE_METER = 10.7639;
+let info = {};
 
-  Area in squareFeet =
-  Examples-----------------
-    Enter the length of the room in meters:
-      10
-    Enter the width of the room in meters:
-      7
-    The area of the room is 70.00 square meters (753.47 square feet).
+function prompt(message) {
+  console.log(`=> ${message}`);
+}
 
-  Data Structure-----------
-    - n/a
+function calculateAreaInMeters() {
+  const LENGTH_IN_METERS = info.lengthInMeters;
+  const WIDTH_IN_METERS = info.widthInMeters;
+  const AREA_IN_METERS = LENGTH_IN_METERS * WIDTH_IN_METERS;
+  return AREA_IN_METERS;
+}
 
-  Algorithm----------------
+function calculateAreaInFeet () {
+  const AREA_IN_METERS = info.areaInMeters;
+  const AREA_IN_FEET = AREA_IN_METERS * NUMBER_OF_FEET_PER_ONE_METER;
+  return AREA_IN_FEET;
+}
 
-  - declare const `SQUARE_METER` = 10.7639
-  - GET length in meters from user:
-    - declare `lengthInMeters` and set to return value:
-      - prompt user for length in meters and coerce to Number
-  - GET width in meters from user:
-    - declare `widthInMeters` and set to return value of:
-      -prompt user for width in meters and coerce return value to Number
-  - calculate area in square meters
-    - declare `areaInMeters` and init to `lengthInMeters` * `widthInMeters`
-  - calculate area in square feet
-  - return a string containing area in meters and feet rounded to two decimals
-*/
+prompt(`Enter the length of the room in meters:`);
+info.lengthInMeters = Number(READLINE.question());
 
-let rlSync = require('readline-sync');
+prompt(`Enter the width of the room in meters:`);
+info.widthInMeters = Number(READLINE.question());
 
-const SQUARE_METER = 10.7639;
+info.areaInMeters = calculateAreaInMeters();
+info.areaInFeet = calculateAreaInFeet();
 
-console.log(`Please enter the length in meters:`);
-let lengthInMeters = Number(rlSync.prompt());
-console.log(lengthInMeters);
+console.log(info);
 
-console.log(`Please enter the width in meters:`);
-let widthInMeters = Number(rlSync.prompt());
-console.log(widthInMeters);
+prompt(`The area of the room is ${info.areaInMeters.toFixed(2)} square meters (${info.areaInFeet.toFixed(2)} square feet).`);
 
-let areaInMeters = lengthInMeters * widthInMeters;
+/* -------------------------BOOK-SOLUTION----------------------------------
+  let readlineSync = require("readline-sync");
 
-let areaInSquareFeet = areaInMeters * SQUARE_METER;
+  const SQMETERS_TO_SQFEET = 10.7639;
 
-console.log(`The area of the room is ${areaInMeters.toFixed(2)} square meters (${areaInSquareFeet.toFixed(2)} square feet).`);
+  console.log("Enter the length of the room in meters:");
+  let length = readlineSync.prompt();
+  length = parseInt(length, 10);
+
+  console.log("Enter the width of the room in meters:");
+  let width = readlineSync.prompt();
+  width = parseInt(width, 10);
+
+  let areaInMeters = (length * width);
+  let areaInFeet = (areaInMeters * SQMETERS_TO_SQFEET);
+
+  console.log(
+    `The area of the room is ${areaInMeters.toFixed(2)} square meters
+     (${areaInFeet.toFixed(2)} square feet).`
+  );
+
+---------------------------------------------------------------------------- */
+
+
