@@ -1,71 +1,63 @@
-/*
-  # Problem:
+/* -------------PROBLEM DESCRIPTION---------------------
 
-    Create a function that takes 2 arguments, an array
-    and an object.The array will contain 2 or more elements
-    that, when combined with adjoining spaces, will produce
-    a person's name. The object will contain two keys, "title"
-    and "occupation", and the appropriate values. Your function
-    should return a greeting that uses the person's full name,
-    and mentions the person's title.
+ # Create a function that takes 2 arguments, an array
+   and an object. The array will contain 2 or more
+   elements that, when combined with adjoining spaces,
+   will produce a person's name. The object will contain
+   two keys, "title" and "occupation", and the appropriate
+   values. Your function should return a greeting that
+   uses the person's full name, and mentions the person's
+   title.
 
+------------------------------------------------------ */
 
-Problem ---------------------------------------
-- Input: an Array and an Object
-- Output: String - greeting containing person's full name and occupation
-- Details:
-  - obj input -> 2 keys 'title' and 'occupation'
-  - log `Hello {full name}! Nice to have a {title, occupation} around.
+// Version 1
 
-Examples --------------------------------------
-  console.log(
-    greetings(["John", "Q", "Doe"], { title: "Master", occupation: "Plumber" })
-  );
-  // logs Hello, John Q Doe! Nice to have a Master Plumber around.
+function greetingsV1(arr, obj) {
+  let fullName = arr.join(' ');
+  console.log(`Hello ${fullName}! Nice to have a ${obj.title} ${obj.occupation} around.`);
+}
 
-Data Structure:
+greetingsV1(["John", "Q", "Doe"], { title: "Master", occupation: "Plumber" });
 
-Algorithm -----------------------------------
-- declare variable `fullName`
-    - initialize to the result of merging the elements of
-    the array into a string
-- declare variable `object` and set to the object input
-- declare variable `title` and set to the value of the
-title property on the object
-- print a greeting to the console as a string including
- their full name, title, and occupation
+// Version 2
 
-# given 2 collections: a collection of components of a full
- name as an Array and an object containing details about
- the person's occupation and title
-
-START
-
-SET `fullName` = merge elements of array into a string
-SET `title` = READ obj.title
-SET occupation = READ obj.occupation
-
-PRINT greeting including fullName, title, and occupation
-
-END
-
-*/
-
-function greetings(arr, obj) {
+function greetingsV2(arr, obj) {
   const FULL_NAME = arr.join(' ');
   const TITLE = obj.title;
   const OCCUPATION = obj.occupation;
-  console.log(`Hello, ${FULL_NAME}! Nice to have a ${TITLE} ${OCCUPATION} around.`);
+
+  console.log(`Hello ${FULL_NAME}! Nice to have a ${TITLE} ${OCCUPATION} around. `);
 }
 
-console.log(
-  greetings(["John", "Q", "Doe"], { title: "Master", occupation: "Plumber" })
-);
-// logs Hello, John Q Doe! Nice to have a Master Plumber around.
+greetingsV2(["John", "Q", "Doe"], { title: "Master", occupation: "Plumber" });
 
-function greetingsBV (name, status) {
-  return `Hello, ${name.join(' ')}. Nice to have a ${status["title"]} ${status["occupation"]} around.`;
+// Version 3
+
+function greetingsV3(arr, obj) {
+  let name = '';
+  for (let idx = 0; idx < arr.length; idx += 1) {
+    let currentValue = arr[idx];
+    if (idx === arr.length - 1) {
+      name += currentValue;
+    } else {
+      name += currentValue + ' ';
+    }
+  }
+  let credentials = Object.values(obj).join(' ');
+
+  console.log('Hello ' + name + '! Nice to have a ' + credentials + ' around.' );
+
 }
-console.log(
-  greetingsBV(["John", "Q", "Doe"], { title: "Master", occupation: "Plumber" })
-);
+
+greetingsV3(["John", "Q", "Doe"], { title: "Master", occupation: "Plumber" });
+
+/* -----------------BOOK SOUTION------------------------
+
+  function greetings(name, status) {
+    return `Hello, ${name.join(" ")}! Nice to have a ${status["title"]} ${
+      status["occupation"]
+    } around.`;
+  }
+
+------------------------------------------------------ */

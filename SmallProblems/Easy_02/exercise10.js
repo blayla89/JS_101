@@ -1,47 +1,69 @@
-/*
-  # Problem: Build a program that logs when the user will retire
+/* -------------PROBLEM DESCRIPTION---------------------
+  # Build a program that logs when the user will retire
     and how many more years the user has to work until
     retirement.
 
-Problem ----------------------------------------------
-- Input: String
-- Output: String
+  Example:
+
+    What is your age? 30
+    At what age would you like to retire? 70
+
+    It's 2017. You will retire in 2057.
+    You have only 40 years of work to go!
+
+------------------------------------------------------ */
+
+const READLINE = require('readline-sync');
+
+let today = new Date();
+let currentYear = today.getFullYear();
+
+function prompt(msg) {
+  console.log(`=> ${msg}`);
+}
+
+function calculateYearsLeftTilRetirement(currentAge, retirementAge) {
+  return retirementAge - currentAge;
+}
+
+function calcaulateRetireMentYear(currentYear, yearsLeft) {
+  return currentYear + yearsLeft;
+}
+
+// MAIN ----------------------------------------------------------
+
+prompt(`What is your age?`);
+let currentAge = Number(READLINE.question());
 
 
-Examples ----------------------------------------------
-  What is your age? 30
-  At what age would you like to retire? 70
+prompt(`At what age would you like to retire?`);
+let retirementAge = Number(READLINE.question());
 
-  It's 2017. You will retire in 2057.
-  You have only 40 years of work to go!
+let yearsLeft = calculateYearsLeftTilRetirement(currentAge, retirementAge);
+let retirementYear = calcaulateRetireMentYear(currentYear, yearsLeft);
 
 
-Data Structure: n/a
+prompt(`It's ${currentYear}. You will retire in ${retirementYear}.
+You only have ${yearsLeft} years of work to go!`);
 
-Algorithm:
-  - GET the user's current age and init to input value
-  - GET the user's desired retirment age and init to input value
-  - SET yearsLeft to work the result of subtracting current age from retirement
-    - coerce to Number
-  - return String including the current year, the year they will
-  retire in and how many years they have left
 
-*/
+/* -----------------BOOK SOUTION------------------------
 
-let rlSync = require('readline-sync');
+let readlineSync = require("readline-sync");
 
-console.log(`What is your age?`);
-let currentAge = rlSync.question();
+let currentAge = Number(readlineSync.question("What is your age?\n"));
+let retirementAge = Number(
+  readlineSync.question("At what age would you like to retire?\n")
+);
 
-console.log(`At what age would you like to retire?`);
-let ageToRetire = rlSync.question();
+let today = new Date();
 
-let yearsLeft = Number(ageToRetire) - Number(currentAge);
+let currentYear = today.getFullYear();
 
-let currentDate = new Date();
+let workYearsToGo = retirementAge - currentAge;
+let retirementYear = currentYear + workYearsToGo;
 
-console.log(currentDate.getFullYear());
+console.log(`It's ${currentYear}. You will retire in ${retirementYear}. `);
+console.log(`You have only ${workYearsToGo} years of work to go!`);
 
-console.log(`It's ${currentDate.getFullYear()}. You will retire in
-${currentDate.getFullYear() + yearsLeft}.\nYou only have ${yearsLeft} years to go.`);
-
+------------------------------------------------------ */
