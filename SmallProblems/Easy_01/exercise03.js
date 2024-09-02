@@ -5,34 +5,44 @@
 
 ---------------------------------------------------------------------------- */
 
-// Version 1
+// Version 1 ---------------------------
 
-console.log(`\nVersion 1:`);
+console.log('\nVersion 1: ');
 
-for (let num = 1; num < 99; num += 1) {
-  if (num % 2 === 0) {
-    console.log(num);
-  }
+for (let idx = 0; idx < 99; idx += 2) {
+  console.log(idx);
 }
 
-// Version 2
-console.log(`\nVersion 2:`);
+// Version 2 ---------------------------
 
-for (let num = 2; num < 99; num += 2) {
+console.log('\nVersion 2: ');
+
+for (let idx = 0; idx < 99; idx += 1) {
+  if (idx % 2 === 1) continue;
+  console.log(idx);
+}
+
+// Version 3 ---------------------------
+
+console.log('\nVersion 3: ');
+
+let count = 0;
+
+while (count < 100) {
+  console.log(count);
+  count += 2;
+}
+
+// Version 4 ---------------------------
+
+console.log('\nVersion 4: ');
+
+let num = 0;
+
+do {
   console.log(num);
-
-}
-
-// Version 3
-
-console.log(`\nVersion 3:`);
-
-for (let num = 1; num < 99; num += 1) {
-  if (num % 2 !== 0) {
-    continue;
-  }
-  console.log(num);
-}
+  num += 2;
+} while (num < 100);
 
 /* -------------------------BOOK-SOLUTION----------------------------------
 

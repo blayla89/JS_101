@@ -1,58 +1,61 @@
 /* -----------------------PROBLEM-DESCRIPTION-------------------------------
- # Write a program that asks the user to enter an integer greater than
+
+   Write a program that asks the user to enter an integer greater than
    0, then asks whether the user wants to determine the sum or the product
    of all numbers between 1 and the entered integer, inclusive.
 
 ---------------------------------------------------------------------------- */
-
 const READLINE = require('readline-sync');
 
-function prompt(message) {
-  console.log(`=> ${message}`);
+function prompt(msg) {
+  console.log(`=> ${msg}`);
 }
 
-function computeSumOfConsecutiveIntegers(integer) {
-  let sum = 0;
-  for (let idx = 1; idx <= integer; idx += 1) {
-    sum += idx;
+
+function sumRange(int) {
+  if (int < 1) return int;
+
+  return int + sumRange(int - 1);
+
+}
+
+function multiplyRange(int) {
+  if (int <= 1) return int;
+
+  return int * multiplyRange(int - 1);
+}
+
+function displayResult(operation, num) {
+  let result;
+
+  if (operation === 's') {
+    operation = 'sum';
+    result = sumRange(num);
+    console.log(result);
+
+  } else {
+    operation = 'product';
+    result = multiplyRange(num);
   }
-  return sum;
+
+  prompt(`The ${operation} of the integers between 1 and ${num} is ${result}.`);
+
 }
 
-function computeProductOfConsecutiveIntegers(integer) {
-  let product = 1;
-  for (let idx = 1; idx <= integer; idx += 1) {
-    product *= idx;
-  }
-  return product;
+// MAIN PROGRAM -------------------------------------------
+
+prompt(`Please enter an integer greater than 0: `);
+let int = Number(READLINE.question());
+
+while (!Number.isInteger(int) || int < 1) {
+  prompt(`Error: Invalid number. Please re-enter an integer greater than 0.`);
+  int = Number(READLINE.question());
 }
 
-function displayOperationResult(operation, integer) {
-  switch (operation) {
-    case 's':
-      prompt(`The sum of the integers between 1 and ${integer} is
-       ${computeSumOfConsecutiveIntegers(integer)}.`);
-      break;
-    case 'p':
-      prompt(`The product of the integers between 1 and ${integer} is 
-      ${computeProductOfConsecutiveIntegers(integer)}.`);
-      break;
-    default:
-      prompt(`Error: Invalid operation.`);
-      break;
-  }
-}
+prompt(`Enter "s" to compute the sum, or "p" to compute the product.`);
+let operation = READLINE.question().toLowerCase();
 
-
-// MAIN ---------------------------------------------------------------
-
-prompt(`Please enter an integer greater than 0:`);
-let integer = Number(READLINE.question());
-
-prompt(`Please enter "s" to compute the sum, or "p" to compute the product:`);
-let operation = READLINE.question();
-
-displayOperationResult(operation, integer);
+displayResult(operation, int);
 
 
 /* -------------------------BOOK-SOLUTION----------------------------------

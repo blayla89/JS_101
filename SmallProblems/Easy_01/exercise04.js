@@ -10,41 +10,40 @@
 
 ---------------------------------------------------------------------------- */
 
+const SQMETERS_TO_SQFEET =  10.7639;
+
 const READLINE = require('readline-sync');
-const NUMBER_OF_FEET_PER_ONE_METER = 10.7639;
-let info = {};
 
 function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-function calculateAreaInMeters() {
-  const LENGTH_IN_METERS = info.lengthInMeters;
-  const WIDTH_IN_METERS = info.widthInMeters;
-  const AREA_IN_METERS = LENGTH_IN_METERS * WIDTH_IN_METERS;
-  return AREA_IN_METERS;
-}
+prompt(`Enter the length of the room in meters:`);
+let length = Number(READLINE.question());
 
-function calculateAreaInFeet () {
-  const AREA_IN_METERS = info.areaInMeters;
-  const AREA_IN_FEET = AREA_IN_METERS * NUMBER_OF_FEET_PER_ONE_METER;
-  return AREA_IN_FEET;
-}
 
 prompt(`Enter the length of the room in meters:`);
-info.lengthInMeters = Number(READLINE.question());
+let width = Number(READLINE.question());
 
-prompt(`Enter the width of the room in meters:`);
-info.widthInMeters = Number(READLINE.question());
 
-info.areaInMeters = calculateAreaInMeters();
-info.areaInFeet = calculateAreaInFeet();
+function calculateArea(num1, num2, units ) {
+  let area;
 
-console.log(info);
+  if (units === 'meters') {
+    area = num1 * num2;
+  } else {
+    area = (num1 * num2) * SQMETERS_TO_SQFEET;
+  }
 
-prompt(`The area of the room is ${info.areaInMeters.toFixed(2)} square meters (${info.areaInFeet.toFixed(2)} square feet).`);
+  return area.toFixed(2);
+}
+
+prompt(`The area of the room is ${calculateArea(length, width, 'meters')} square meters (${calculateArea(length, width, 'feet')} square feet).`);
+
+/*
 
 /* -------------------------BOOK-SOLUTION----------------------------------
+
   let readlineSync = require("readline-sync");
 
   const SQMETERS_TO_SQFEET = 10.7639;
@@ -65,6 +64,6 @@ prompt(`The area of the room is ${info.areaInMeters.toFixed(2)} square meters ($
      (${areaInFeet.toFixed(2)} square feet).`
   );
 
----------------------------------------------------------------------------- */
+-------------------------------------------------------------------------- */
 
 
