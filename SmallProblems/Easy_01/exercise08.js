@@ -11,56 +11,84 @@
 
 ---------------------------------------------------------------------------- */
 
-// Version 1 ---------------------------------------------------------
+// Version 1 --------------------------------------
 
 function isLeapYear(year) {
-
-  let isDivisibleBy400 = year % 400 === 0;
-
-  let isDivisibleBy4 = year % 4 === 0;
-
-  let isDivisbleBy100 = year % 100 === 0;
-
-  let leapYear = isDivisibleBy400 || (isDivisibleBy4 && !isDivisbleBy100);
-
-  console.log(leapYear);
-  return leapYear;
-
+  if (year % 4 === 0 && year % 400 === 0) {
+    return true;
+  } else if (year % 4 === 0 && year % 100 !== 0 ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 isLeapYear(2016);      // true
 isLeapYear(2015);      // false
 isLeapYear(2100);      // false
 isLeapYear(2400);      // true
+
 isLeapYear(240000);    // true
 isLeapYear(240001);    // false
 isLeapYear(2000);      // true
 isLeapYear(1900);      // false
+
 isLeapYear(1752);      // true
 isLeapYear(1700);      // false
 isLeapYear(1);         // false
 isLeapYear(100);       // false
 isLeapYear(400);       // true
 
-// Version 2 -------------------------------------------------------
+
+// Version 2 --------------------------------------
 
 function isLeapYearV2(year) {
-  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
+  if (year % 400 === 0) {
+    return true;
+  } else if (year % 100 === 0) {
+    return true;
+  } else {
+    return year % 4 === 0;
+  }
 }
 
 isLeapYearV2(2016);      // true
 isLeapYearV2(2015);      // false
 isLeapYearV2(2100);      // false
 isLeapYearV2(2400);      // true
+
 isLeapYearV2(240000);    // true
 isLeapYearV2(240001);    // false
 isLeapYearV2(2000);      // true
 isLeapYearV2(1900);      // false
+
 isLeapYearV2(1752);      // true
 isLeapYearV2(1700);      // false
 isLeapYearV2(1);         // false
 isLeapYearV2(100);       // false
 isLeapYearV2(400);       // true
+
+// Version 2 --------------------------------------
+
+function isLeapYearV3(year) {
+  return (year % 400 === 0) || ((year % 4 === 0) && (year % 100 !== 0));
+}
+
+isLeapYearV3(2016);      // true
+isLeapYearV3(2015);      // false
+isLeapYearV3(2100);      // false
+isLeapYearV3(2400);      // true
+
+isLeapYearV3(240000);    // true
+isLeapYearV3(240001);    // false
+isLeapYearV3(2000);      // true
+isLeapYearV3(1900);      // false
+
+isLeapYearV3(1752);      // true
+isLeapYearV3(1700);      // false
+isLeapYearV3(1);         // false
+isLeapYearV3(100);       // false
+isLeapYearV3(400);       // true
 
 
 /* -------------------------BOOK-SOLUTION----------------------------------
@@ -81,5 +109,3 @@ isLeapYearV2(400);       // true
     return (year % 400 === 0) || (year % 4 === 0 && year % 100 !== 0);
   }
 ---------------------------------------------------------------------------- */
-
-

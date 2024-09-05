@@ -1,6 +1,6 @@
 /* -----------------------PROBLEM-DESCRIPTION-------------------------------
 
-  #Write a function that determines and returns the UTF-16 string value
+  Write a function that determines and returns the UTF-16 string value
   of a string passed in as an argument. The UTF-16 string value is the sum
   of the UTF-16 values of every character in the string. (You may use String.
   prototype.charCodeAt() to determine the UTF-16 value of a character.)
@@ -19,23 +19,23 @@
     utf16Value(OMEGA + OMEGA + OMEGA);  // 2811
 ---------------------------------------------------------------------------- */
 
-function utf16Value(string) {
-  let sum = 0;
-  for (let count = 0; count < string.length; count += 1) {
-    let utf16CharValue = string.charCodeAt(count);
-    sum += utf16CharValue;
+function utf16Value(str) {
+  let value = 0;
+
+  for (let idx = 0; idx < str.length; idx += 1) {
+    value += str.charCodeAt(idx);
   }
-  return sum;
+
+  return value;
 }
 
-utf16Value('Four score');         // 984
-utf16Value('Launch School');      // 1251
-utf16Value('a');                  // 97
-utf16Value('');                   // 0
+console.log(utf16Value('Four score'));         // 984
+console.log(utf16Value('Launch Schoo)l'));      // 1251
+console.log(utf16Value('a'));                   // 97
+console.log(utf16Value(''));                   // 0
 const OMEGA = "\u03A9";             // UTF-16 character 'Ω' (omega)
-utf16Value(OMEGA);                  // 937
-utf16Value(OMEGA + OMEGA + OMEGA);  // 2811
-
+console.log(utf16Value(OMEGA));                  // 937
+console.log(utf16Value(OMEGA + OMEGA + OMEGA));  // 2811
 
 /* -------------------------BOOK-SOLUTION----------------------------------
 
