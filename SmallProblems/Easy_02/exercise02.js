@@ -1,8 +1,8 @@
 /* -------------PROBLEM DESCRIPTION---------------------
 
-  # Write a program that will ask for user's name. The
-    program will then greet the user. If the user writes
-    "name!" then the computer yells back to the user.
+  Write a program that will ask for user's name. The
+  program will then greet the user. If the user writes
+  "name!" then the computer yells back to the user.
 
   Example:
     What is your name? Bob
@@ -12,37 +12,55 @@
     HELLO BOB. WHY ARE WE SCREAMING?
 
 ------------------------------------------------------ */
-// Variables
+
 const READLINE = require('readline-sync');
 
-// FXNS
-function prompt(message) {
-  console.log(`=> ${message}`);
+function prompt(msg) {
+  console.log(`=> ${msg}`);
 }
 
-function getInput() {
+function getName(msg) {
+  prompt(msg);
   return READLINE.question();
-}
 
-function endsWithExclamationPoint(name) {
-  return name[name.length - 1] === '!';
-}
 
-function displayGreeting(name) {
-  if (endsWithExclamationPoint(name)) {
-    name = name.slice(0, -1);
-    prompt(`Hello ${name}. Why are we screaming?`.toUpperCase());
-  } else {
-    prompt(`Hello ${name}.`);
+}
+function greetUser(msg) {
+  let name = getName(msg);
+  let greeting = `Hello, ${name}.`;
+
+  // Version 1 ============================
+
+  if (name.endsWith('!')) {
+    greeting = `Hello, ${name.slice(0, name.length - 1)}. Why are we screaming?`.toUpperCase();
   }
+
+  // Version2 =============================
+
+  /* if (name[name.length - 1] === '!') {
+    greeting =
+      `Hello, ${name.substring(0, name.length)}.
+        Why are we screaming?`.toUpperCase();
+    }
+ */
+
+  // Version3 =============================
+
+  /*   if (name.indexOf('!', name.length -1) > 0) {
+      greeting =
+        `Hello, ${name.substring(0, name.length - 1)}.
+          Why are we screaming?`.toUpperCase();
+    }
+ */
+  prompt(greeting);
+
 }
 
-// MAIN
-prompt(`What is your name?`);
 
-let name = getInput();
+// MAIN ---------------------------
 
-displayGreeting(name);
+greetUser(`What is your name?`);
+
 
 /* -----------------BOOK SOUTION------------------------
 

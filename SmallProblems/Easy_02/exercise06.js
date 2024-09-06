@@ -14,10 +14,9 @@
 
 ------------------------------------------------------ */
 
-function penultimate(string) {
-  let words = string.split(' ');
-  let secondToLast = words[words.length - 2];
-  return secondToLast;
+function penultimate(str) {
+  let arrOfWords = str.split(' ');
+  return arrOfWords[arrOfWords.length - 2];
 }
 
 console.log(penultimate("last word") === "last"); // logs true
@@ -25,7 +24,9 @@ console.log(penultimate("Launch School is great!") === "is"); // logs true
 
 /* -----------------BOOK SOUTION------------------------
 
-  console.log(penultimate("last word") === "last"); // logs true
-  console.log(penultimate("Launch School is great!") === "is"); // logs true
+  function penultimate(words) {
+    let wordsArray = words.split(" ");
+    return wordsArray[wordsArray.length - 2];
+  };
 
 ------------------------------------------------------ */
