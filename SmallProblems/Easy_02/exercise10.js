@@ -15,36 +15,33 @@
 
 const READLINE = require('readline-sync');
 
-let today = new Date();
-let currentYear = today.getFullYear();
-
 function prompt(msg) {
   console.log(`=> ${msg}`);
 }
 
-function calculateYearsLeftTilRetirement(currentAge, retirementAge) {
-  return retirementAge - currentAge;
+function getInput(msg) {
+  prompt(msg);
+  return Number(READLINE.question());
 }
 
-function calcaulateRetireMentYear(currentYear, yearsLeft) {
-  return currentYear + yearsLeft;
+function yearsLeftToRetirement(age, retirementAge) {
+  return retirementAge - age;
 }
 
-// MAIN ----------------------------------------------------------
+function logRetirementMessage(years) {
+  let today = new Date();
+  let currentYear = today.getFullYear();
+  prompt(`It's ${currentYear}. You will retire in ${currentYear + years}.
+  You only have ${years} year of work left to go!`);
+}
 
-prompt(`What is your age?`);
-let currentAge = Number(READLINE.question());
+// MAIN ===================================================
 
+let currentAge = getInput(`What is your age?`);
+let idealRetirementAge = getInput(`At what age would you like to retire?`);
+let yearsLeft = yearsLeftToRetirement(currentAge, idealRetirementAge);
 
-prompt(`At what age would you like to retire?`);
-let retirementAge = Number(READLINE.question());
-
-let yearsLeft = calculateYearsLeftTilRetirement(currentAge, retirementAge);
-let retirementYear = calcaulateRetireMentYear(currentYear, yearsLeft);
-
-
-prompt(`It's ${currentYear}. You will retire in ${retirementYear}.
-You only have ${yearsLeft} years of work to go!`);
+logRetirementMessage(yearsLeft);
 
 
 /* -----------------BOOK SOUTION------------------------

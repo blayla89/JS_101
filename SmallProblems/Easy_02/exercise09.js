@@ -8,13 +8,17 @@ Example Output:
 
 ------------------------------------------------------ */
 
+function randomAgeInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-// generate random number between 20 and 120
+function prompt(msg) {
+  console.log(`=> ${msg}`);
+}
 
 
-let random = Math.floor(Math.random() * (120 - 20 + 1)) + 20;
+prompt(`Teddy is ${randomAgeInclusive(20, 100)} years old.`);
 
-console.log(`Teddy is ${random} years old!`);
 
 /* -----------------BOOK SOUTION------------------------
 
